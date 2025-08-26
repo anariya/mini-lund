@@ -8,4 +8,18 @@ Author: Jade Abidi
 
 #include "MiniLund/MiniLund.h"
 
-namespace MiniLund
+namespace MiniLund {
+
+  // MiniLund class.
+  
+  // Current version number.
+  const double MiniLund::VERSION = 0.1;
+
+  // Constructor.
+  MiniLund::MiniLund() {
+    
+  }
+}
+
+
+

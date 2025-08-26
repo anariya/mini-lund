@@ -1,2 +1,2 @@
 # lund-mini
-A stripped-down implementation of the Lund string model, based on PYTHIA but with some changes and limited only to string hadronisation of q-qbar pairs.
+A stripped-down implementation of the Lund string model, based on PYTHIA but limited only to string hadronisation of q-qbar pairs. Aims to bypass issue of a non-flat rapidity plateau along the string when joining step parameters are incorrectly tuned, by instead enforcing a specific distribution of joining step rapidity spacings to ensure a constant rapidity plateau and uniform fragmentation functions along the string.

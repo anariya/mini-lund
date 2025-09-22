@@ -1,0 +1,87 @@
+#+BEGIN_SRC python
+
+  def fragment_string(cme, flav):
+      # initialise event record
+      # add a quark and antiquark of given flav in opposite directions, with cme / 2 energy each
+      while True:
+	  # select to fragment from left or right side with equal probability
+	  # select a new flav and pT according to Gaussian distributions
+	  # determine the new hadron
+	  # calculate transverse mass
+	  if W_rem <= W_min:
+	      if W_rem < 0:
+		  veto
+
+	      # determine pT for new hadron
+	      # select new hadron
+	      # project W_rem evenly between both hadrons
+	      # calculate kinematics
+	      # add new hadrons to event record
+	      break
+
+	  # select a z fraction for the hadron according to f(z)
+	  # calculate kinematics
+	  # add new hadron to event record
+
+      # return event record
+
+  def fragment_string_undo(cme, flav, probUndoJoin):
+      # initialise event record
+      # add a quark and antiquark of given flav in opposite directions, with cme / 2 energy each
+      while True:
+	  # select to fragment from left or right side with equal probability
+	  # select a new flav and pT according to Gaussian distributions
+	  # determine the new hadron
+	  # calculate transverse mass
+	  if W_rem <= W_min:
+	      if W_rem < 0:
+		  with probability probUndoJoin:
+		      # revert the last string break to occur
+		      # determine the random number used at the previous string break
+		      # determine the new hadron
+		      # calculate transverse mass
+
+	      # determine pT for second new hadron
+	      # select second new hadron
+	      # project W_rem evenly between both hadrons
+	      # calculate kinematics
+	      # add new hadrons to event record
+	      break
+
+	  # select a z fraction for the hadron according to f(z)
+	  # calculate kinematics
+	  # add new hadron to event record
+
+      # return event record
+
+  def fragment_string_accordion(cme, flav)
+      # initialise event record
+      # add a quark and antiquark of given flav in opposite directions, with cme / 2 energy each
+      while True:
+	  # select to fragment from left or right side with equal probability
+	  # select a new flav and pT according to Gaussian distributions
+	  # Determine the new hadron
+	  # calculate transverse mass
+	  if W_rem <= 0:
+	      with probability probRemoveLast:
+		  # revert the last string break to occur
+	      # discard the new flav and pT selected, rewind random number generator (?)
+	      # select a new hadron using both string ends
+	      # set rapidity spacing between adjacent hadrons according to g(delta_y) distribution
+	      # calculate kinematics
+	      # add new hadron to event record
+
+	      # rescale all longitudinal momenta in such a way that:
+		  restores energy-momentum conservation
+		  multiplies all longitudinal momenta by a constant
+
+	      break
+
+	  # select a z fraction for the hadron according to f(z)
+	  # calculate kinematics
+	  # add new hadron to event record
+
+      # return event record
+
+
+#+END_SRC

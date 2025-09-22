@@ -35,7 +35,7 @@
 	  # calculate transverse mass
 	  if W_rem <= W_min:
 	      if W_rem < 0:
-		  with probability probUndoJoin:
+		  with porbability probUndoJoin:
 		      # revert the last string break to occur
 		      # determine the random number used at the previous string break
 		      # determine the new hadron

@@ -9,7 +9,6 @@
 using namespace std;
 
 #include "MiniLund.h"
-#include "Event.h"
 #include <iostream>
 
 // MiniLund class.
@@ -19,7 +18,7 @@ const double MiniLund::VERSION = 0.1;
 
 // Constructor.
 MiniLund::MiniLund() {
-  cout << "Constructing." << endl;
+  event = Event();
 }
 
 int MiniLund::run() {

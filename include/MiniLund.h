@@ -27,13 +27,14 @@ public:
 
 private:
 
-  // Centre-of-mass energy.
-  double cme;
-
   // Remaining string momentum.
   Vec4 pRem;
   double w2Rem;
 
+  // String ends.
+  StringEnd posEnd;
+  StringEnd negEnd;
+  
   // Lund fragmentation parameters.
   double a;
   double b;

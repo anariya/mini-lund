@@ -22,8 +22,21 @@ MiniLund::MiniLund() {
 }
 
 // Fragment string using the accordion algorithm.
-bool MiniLund::fragment_string_accordion(double cme, Flavour flav) {
+bool MiniLund::fragment_string_accordion(double cme, int flav) {
 
+  // Set string momentum.
+  pRem = Vec4(cme, 0, 0, 0);
+
+  // Set up string ends.
+  posEnd = StringEnd(true, flav, 0.0, 0.0);
+  negEnd = StringEnd(false, -flav, 0.0, 0.0);
+
+  // Fragmentation loop.
+  while (true) {
+    // Select end to fragment from.
+    
+  }
+  
 }
 
 

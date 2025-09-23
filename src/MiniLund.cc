@@ -21,11 +21,12 @@ MiniLund::MiniLund() {
   event = Event();
 }
 
-int MiniLund::run() {
-  Vec4 p(1., 2., 3., 4.);
-  cout << p.e() << endl;
-  return 1216;
+// Fragment string using the accordion algorithm.
+bool MiniLund::fragment_string_accordion(double cme, Flavour flav) {
+
 }
+
+
 
 
 

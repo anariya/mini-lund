@@ -1,0 +1,611 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     21308,        601]
+NotebookOptionsPosition[     20601,        580]
+NotebookOutlinePosition[     21000,        596]
+CellTagsIndexPosition[     20957,        593]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"e", "+", "pz"}], "==", "ppos"}], ",", 
+     RowBox[{
+      RowBox[{"e", "-", "pz"}], "==", "pneg"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"e", ",", "pz"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.967598896274897*^9, 3.96759891466133*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"5024f0ee-3ca4-4c5c-9068-f7ec35922e27"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"e", "\[Rule]", 
+     FractionBox[
+      RowBox[{"pneg", "+", "ppos"}], "2"]}], ",", 
+    RowBox[{"pz", "\[Rule]", 
+     RowBox[{
+      FractionBox["1", "2"], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "pneg"}], "+", "ppos"}], ")"}]}]}]}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.967598917519432*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"a187cb18-8740-40c1-b3b5-fd59f3593e3e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"deltay", "==", 
+      RowBox[{"0.5", "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"epos", "+", "pzpos"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"epos", "-", "pzpos"}], ")"}]}], "]"}]}]}], ",", 
+     RowBox[{"deltay", "==", 
+      RowBox[{
+       RowBox[{"-", "0.5"}], "*", 
+       RowBox[{"Log", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"eneg", "+", "pzneg"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{"eneg", "-", "pzneg"}], ")"}]}], "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"epos", "^", "2"}], "-", 
+       RowBox[{"pzpos", "^", "2"}]}], "==", 
+      RowBox[{"mTpos", "^", "2"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"eneg", "^", "2"}], "-", 
+       RowBox[{"pzneg", "^", "2"}]}], "==", 
+      RowBox[{"mTneg", "^", "2"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"pzpos", ",", "pzneg", ",", "epos", ",", "eneg"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.967600456815881*^9, 3.967600631207902*^9}, {
+  3.9676006643282213`*^9, 3.9676007108334703`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"c3820fdb-da25-4171-a8d6-9e4c6401d0be"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pzpos", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "1.`"}], " ", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "0.5`"}], " ", 
+          SuperscriptBox["mTpos", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{
+            RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+          SuperscriptBox["mTpos", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SuperscriptBox["mTpos", "2"]}]}]]}]}], ",", 
+     RowBox[{"pzneg", "\[Rule]", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "0.5`"}], " ", 
+         SuperscriptBox["mTneg", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+         SuperscriptBox["mTneg", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"2.`", " ", "deltay"}]], " ", 
+         SuperscriptBox["mTneg", "2"]}]}]]}], ",", 
+     RowBox[{"epos", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "1.`"}], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}], "-", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}]}], ")"}]}]}], ",", 
+     RowBox[{"eneg", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "1.`"}], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}], "-", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}]}], ")"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pzpos", "\[Rule]", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "0.5`"}], " ", 
+         SuperscriptBox["mTpos", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+         SuperscriptBox["mTpos", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"2.`", " ", "deltay"}]], " ", 
+         SuperscriptBox["mTpos", "2"]}]}]]}], ",", 
+     RowBox[{"pzneg", "\[Rule]", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "0.5`"}], " ", 
+         SuperscriptBox["mTneg", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+         SuperscriptBox["mTneg", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"2.`", " ", "deltay"}]], " ", 
+         SuperscriptBox["mTneg", "2"]}]}]]}], ",", 
+     RowBox[{"epos", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"1.`", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}]}], ")"}]}]}], ",", 
+     RowBox[{"eneg", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "1.`"}], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}], "-", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}]}], ")"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pzpos", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "1.`"}], " ", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "0.5`"}], " ", 
+          SuperscriptBox["mTpos", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{
+            RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+          SuperscriptBox["mTpos", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SuperscriptBox["mTpos", "2"]}]}]]}]}], ",", 
+     RowBox[{"pzneg", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "1.`"}], " ", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "0.5`"}], " ", 
+          SuperscriptBox["mTneg", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{
+            RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+          SuperscriptBox["mTneg", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SuperscriptBox["mTneg", "2"]}]}]]}]}], ",", 
+     RowBox[{"epos", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "1.`"}], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}], "-", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}]}], ")"}]}]}], ",", 
+     RowBox[{"eneg", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"1.`", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}]}], ")"}]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"pzpos", "\[Rule]", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "0.5`"}], " ", 
+         SuperscriptBox["mTpos", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{
+           RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+         SuperscriptBox["mTpos", "2"]}], "+", 
+        RowBox[{"0.25`", " ", 
+         SuperscriptBox["\[ExponentialE]", 
+          RowBox[{"2.`", " ", "deltay"}]], " ", 
+         SuperscriptBox["mTpos", "2"]}]}]]}], ",", 
+     RowBox[{"pzneg", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "1.`"}], " ", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "0.5`"}], " ", 
+          SuperscriptBox["mTneg", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{
+            RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+          SuperscriptBox["mTneg", "2"]}], "+", 
+         RowBox[{"0.25`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SuperscriptBox["mTneg", "2"]}]}]]}]}], ",", 
+     RowBox[{"epos", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"1.`", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTpos", "2"]}]}]]}]}], ")"}]}]}], ",", 
+     RowBox[{"eneg", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{
+         RowBox[{"-", "1.`"}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]]}]}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"1.`", " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}], "+", 
+         RowBox[{"1.`", " ", 
+          SuperscriptBox["\[ExponentialE]", 
+           RowBox[{"2.`", " ", "deltay"}]], " ", 
+          SqrtBox[
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", "0.5`"}], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{
+               RowBox[{"-", "2.`"}], " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}], "+", 
+            RowBox[{"0.25`", " ", 
+             SuperscriptBox["\[ExponentialE]", 
+              RowBox[{"2.`", " ", "deltay"}]], " ", 
+             SuperscriptBox["mTneg", "2"]}]}]]}]}], ")"}]}]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.967600606312351*^9, 3.9676006335024843`*^9}, {
+  3.967600667634568*^9, 3.9676007113666973`*^9}},
+ CellLabel->"Out[7]=",ExpressionUUID->"c7684acc-f206-431b-898c-7d5fedb7abe5"]
+}, Open  ]]
+},
+WindowSize->{606, 683.25},
+WindowMargins->{{246.75, Automatic}, {Automatic, 33.75}},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e7ae1934-37e9-4b55-a889-3e3376cc5dae"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 439, 12, 29, "Input",ExpressionUUID->"5024f0ee-3ca4-4c5c-9068-f7ec35922e27"],
+Cell[1018, 36, 476, 15, 45, "Output",ExpressionUUID->"a187cb18-8740-40c1-b3b5-fd59f3593e3e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1531, 56, 1274, 37, 89, "Input",ExpressionUUID->"c3820fdb-da25-4171-a8d6-9e4c6401d0be"],
+Cell[2808, 95, 17777, 482, 1434, "Output",ExpressionUUID->"c7684acc-f206-431b-898c-7d5fedb7abe5"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -4,7 +4,8 @@
   Author: Jade Abidi
 */
 
-#include "Event.h"
+#include "Particle.h"
+#include "Basics.h"
 
 class MiniLund {
 public:
@@ -19,11 +20,17 @@ public:
   // Version number.
   static const double VERSION;
 
+  // Probability of fragmenting from positive end.
+  static const double PROBFROMPOS;
+
   // Event record.
   Event event;
 
   // Particle data.
   ParticleData pd;
+
+  // Random number generator.
+  Rndm rndm;
 
 private:
 

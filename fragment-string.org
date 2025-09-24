@@ -83,5 +83,21 @@
 
       # return event record
 
+  def fragment_string_accordion_alt(cme, flav):
+      # initialise event record
+      # add a quark and antiquark of given flav in opposite directions, with cme / 2 energy each
+      # select a number of hadrons N that will be produced in this event
+      # select quark flavours and transverse momenta for N-1 string breaks
+      # select hadron species between these string breaks
+      # calculate transverse masses of all hadrons
+      # select N z fractions from f(z)
+      # find the index i of the hadron with the largest z fraction
+      # calculate kinematics of hadrons 1 to i - 1, breaking off from negative end
+      # calculate kinematics of hadrons i + 1 to N, breaking off from positive end
+      # calculate kinematics of hadron i, breaking off from either end
+          (since z_i is large, only a small amount of energy should be left in string)
+      # rescale all longitudinal momenta in a way that:
+	  restore energy momentum conservation
+	  multiplies all longitudinal momenta by a constant
 
 #+END_SRC

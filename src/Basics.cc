@@ -1,6 +1,8 @@
 // Defines basic classes Rndm, Vec4, RotBstMatrix, and Hist.
 // Adapted from PYTHIA 8.3.
 
+#include "Basics.h"
+
 // Access time information.
 #include <ctime>
 #include <limits>
@@ -10,22 +12,6 @@
 // Rndm class.
 // This class handles random number generation according to the
 // Marsaglia-Zaman-Tsang algorithm
-
-//--------------------------------------------------------------------------
-
-// Method to pass in pointer for external random number generation.
-
-bool Rndm::rndmEnginePtr( RndmEnginePtr rndmEngPtrIn) {
-
-  // Save pointer.
-  if (rndmEngPtrIn == nullptr) return false;
-  rndmEngPtr      = rndmEngPtrIn;
-  useExternalRndm = true;
-
-  // Done.
-  return true;
-
-}
 
 //--------------------------------------------------------------------------
 
@@ -105,82 +91,9 @@ int Rndm::pick(const vector<double>& prob) {
 
 //--------------------------------------------------------------------------
 
-// Use standard random number generation, rather than debug versions.
-
-#include "Pythia8/RngDebug.h"
-
-//--------------------------------------------------------------------------
-
-// Define debug random number calls.
-
-#ifdef RNGDEBUG
-// Flags to control debugging behaviour.
-bool        Rndm::debugNow       = true;
-bool        Rndm::debugLocation  = true;
-bool        Rndm::debugIndex     = false;
-int         Rndm::debugPrecision = 4;
-int         Rndm::debugCall      = 0;
-set<string> Rndm::debugStarts    = {};
-set<string> Rndm::debugEnds      = {};
-set<string> Rndm::debugContains  = {};
-set<string> Rndm::debugMatches   = {};
-// Debug random number calls.
-double rngDebug(double val, string loc, string call, string file, int line) {
-  ++Rndm::debugCall;
-  if (!Rndm::debugNow) return val;
-  bool print = Rndm::debugStarts.size() + Rndm::debugEnds.size() +
-    Rndm::debugContains.size() + Rndm::debugMatches.size() == 0;
-  for (auto &exp : Rndm::debugStarts)
-    print = print || loc.rfind(exp, 0) == 0;
-  for (auto &exp : Rndm::debugEnds)
-    print = print || (loc.length() >= exp.length()
-      && loc.compare(loc.length() - exp.length(), exp.length(), exp) == 0);
-  for (auto &exp : Rndm::debugContains)
-    print = print || loc.find(exp) != string::npos;
-  for (auto &exp : Rndm::debugMatches) print = print || loc == exp;
-  if (!print) return val;
-  cout << setw(80) << left << loc + ":" + call
-       << setprecision(Rndm::debugPrecision) << scientific
-       << setw(Rndm::debugPrecision + 8) << right << val;
-  if (Rndm::debugIndex) cout << setw(12) << right << Rndm::debugCall;
-  if (Rndm::debugLocation) cout << " " << file << ":" << line;
-  cout << "\n";
-  return val;
-}
-double Rndm::flatDebug(string loc, string file, int line) {
-  return rngDebug(flat(), loc, "flat", file, line);}
-double Rndm::xexpDebug(string loc, string file, int line) {
-  return rngDebug(xexp(), loc, "xexp", file, line);}
-double Rndm::gaussDebug(string loc, string file, int line) {
-  return rngDebug(gauss(), loc, "gauss", file, line);}
-pair<double, double> Rndm::gauss2Debug(string loc, string file, int line) {
-  pair<double, double> val = gauss2();
-  rngDebug(val.first, loc, "gauss2:first", file, line);
-  rngDebug(val.second, loc, "gauss2:second", file, line);
-  return val;}
-double Rndm::gammaDebug(string loc, string file, int line,
-  double k0, double r0) {
-  return rngDebug(gamma(k0, r0), loc, "gamma", file, line);}
-pair<Vec4, Vec4> Rndm::phaseSpace2Debug(string loc, string file, int line,
-  double eCM, double m1, double m2) {
-  pair<Vec4, Vec4> val = phaseSpace2(eCM, m1, m2);
-  for (int i = 0; i < 4; ++i) {
-    rngDebug(val.first[i], loc, "phaseSpace2:first:" + to_string(i),
-      file, line);
-    rngDebug(val.second[i], loc, "phaseSpace2:second:" + to_string(i),
-      file, line);
-  }
-  return val;}
-#endif
-
-//--------------------------------------------------------------------------
-
 // Generate next random number uniformly between 0 and 1.
 
 double Rndm::flat() {
-
-  // Use external random number generator if such has been linked.
-  if (useExternalRndm) return rndmEngPtr->flat();
 
   // Ensure that already initialized.
   if (!initRndm) init(DEFAULTSEED);
@@ -2506,6 +2419,3 @@ void HistPlot::plot( bool logY, bool logX, bool userBorders) {
   nTable += histos.size();
 }
 
-//==========================================================================
-
-} // end namespace Pythia8

@@ -380,12 +380,9 @@ class Rndm {
 public:
 
   // Constructors.
-  Rndm() : initRndm(false), stateSave(), useExternalRndm(false) { }
-  Rndm(int seedIn) : initRndm(false), stateSave(), useExternalRndm(false) {
+  Rndm() : initRndm(false), stateSave() { }
+  Rndm(int seedIn) : initRndm(false), stateSave() {
     init(seedIn);}
-
-  // Possibility to pass in pointer for external random number generation.
-  bool rndmEnginePtr( RndmEnginePtr rndmEngPtrIn);
 
   // Initialize, normally at construction or in first call.
   void init(int seedIn = 0) ;
@@ -421,7 +418,7 @@ public:
 
   // Peek at the next random number in sequence without updating
   // the generator state.
-  double peekFlat() {if (useExternalRndm) return -1;
+  double peekFlat() {
     RndmState oldState = stateSave;
     double f = this->flat();
     stateSave = oldState;
@@ -439,31 +436,11 @@ public:
   // The default seed, i.e. the Marsaglia-Zaman random number sequence.
   static constexpr int DEFAULTSEED = 19780503;
 
-#ifdef RNGDEBUG
-  // Random number methods used for debugging only.
-  double flatDebug(string loc, string file, int line);
-  double xexpDebug(string loc, string file, int line);
-  double gaussDebug(string loc, string file, int line);
-  pair<double, double> gauss2Debug(string loc, string file, int line);
-  double gammaDebug(string loc, string file, int line, double k0, double r0);
-  pair<Vec4, Vec4> phaseSpace2Debug(string loc, string file, int line,
-    double eCM, double m1, double m2);
-
-  // Static members for debugging to print call file location or filter.
-  static bool debugNow, debugLocation, debugIndex;
-  static int debugPrecision, debugCall;
-  static set<string> debugStarts, debugEnds, debugContains, debugMatches;
-#endif
-
 private:
 
   // State of the random number generator.
   bool      initRndm;
   RndmState stateSave;
-
-  // Pointer for external random number generation.
-  bool   useExternalRndm;
-  RndmEnginePtr rndmEngPtr{};
 
 };
 
@@ -814,19 +791,6 @@ private:
   bool useLegacy;
 
 };
-
-//==========================================================================
-
-// Methods used for debugging random number sequences.
-
-#ifdef RNGDEBUG
-#define flat() flatDebug(__METHOD_NAME__, __FILE__, __LINE__)
-#define xexp() xexpDebug(__METHOD_NAME__, __FILE__, __LINE__)
-#define gauss() gaussDebug(__METHOD_NAME__, __FILE__, __LINE__)
-#define gamma(...) gammaDebug(__METHOD_NAME__, __FILE__, __LINE__, __VA_ARGS__)
-#define phaseSpace2(...) phaseSpace2Debug(__METHOD_NAME__, __FILE__, __LINE__,\
-    __VA_ARGS__)
-#endif
 
 //==========================================================================
 

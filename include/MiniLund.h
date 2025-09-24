@@ -5,7 +5,6 @@
 */
 
 #include "Particle.h"
-#include "Basics.h"
 
 class MiniLund {
 public:
@@ -15,7 +14,7 @@ public:
 
   // Generate a q-qbar string fragmentation event with a given centre-of-mass
   // energy and quark flavour. Returns false if the event generation failed. Uses the accordion algorithm to join string ends.
-  bool fragment_string_accordion(double cme, Flavour flav);
+  bool fragment_string_accordion(double cme, int flav);
 
   // Version number.
   static const double VERSION;
@@ -23,8 +22,14 @@ public:
   // Probability of fragmenting from positive end.
   static const double PROBFROMPOS;
 
+  // Pre-set sigma for transverse momentum distribution.
+  static const double PTSIGMA;
+
+  // Mass of the single and only hadron.
+  static const double HADRONMASS;
+
   // Event record.
-  Event event;
+  vector<Particle> event;
 
   // Particle data.
   ParticleData pd;

@@ -5,38 +5,7 @@
   Author: Jade Abidi
 */
 
-using namespace std;
-
-#include <cmath>
-
-// Vec4 class.
-class Vec4{
-public:
-
-  // Constructors.
-  Vec4() : eSave(0.), pxSave(0.), pySave(0.), pzSave(0.) { }
-  Vec4(double eIn, double pxIn, double pyIn, double pzIn) : eSave(eIn),
-							    pxSave(pxIn), pySave(pyIn), pzSave(pzIn) { }
-
-  // Member functions for output.
-  double e() const { return eSave; }
-  double px() const { return pxSave; }
-  double py() const { return pySave; }
-  double pz() const { return pzSave; }
-
-  // Member functions for input.
-  void e(double eIn) { eSave = eIn; }
-  void px(double pxIn) { pxSave = pxIn; }
-  void py(double pyIn) { pySave = pyIn; }
-  void pz(double pzIn) { pzSave = pzIn; }
-
-protected:
-  // Components.
-  double eSave;
-  double pxSave;
-  double pySave;
-  double pzSave;
-};
+#include "Basics.h"
 
 // Particle class.
 class Particle {
@@ -46,9 +15,9 @@ public:
   Particle() : idSave(0), statusSave(0), pSave(Vec4(0., 0., 0., 0.)), mSave(0.)
   { }
 
-  Particle(int idIn, int statusIn = 0, double pxIn = 0., double pyIn = 0.,
-	   double pzIn = 0., double eIn = 0., double mIn = 0.) : idSave(idIn),
-								 statusSave(statusIn), pSave(Vec4(eIn, pxIn, pyIn, pzIn)), mSave(mIn) { }
+  Particle(int idIn, int statusIn = 0, double eIn = 0., double pxIn = 0.,
+    double pyIn = 0., double pzIn = 0., double mIn = 0.) : idSave(idIn),
+      statusSave(statusIn), pSave(Vec4(eIn, pxIn, pyIn, pzIn)), mSave(mIn) { }
 
   // Member functions for output.
   int id() const { return idSave; }
@@ -105,6 +74,12 @@ public:
   double pxEnd;
   double pyEnd;
 
+  // Flavour and transverse momentum of previous string end quark.
+  // Allows for string breaks to be undone.
+  int flavEndPrev;
+  double pxEndPrev;
+  double pyEndPrev;
+
   // Flavour of the new string end quark, after the hadron is fragmented off.
   int flavNew;
 
@@ -115,7 +90,7 @@ public:
   // Id of the new hadron.
   int idHadron;
   
-}
-  
+};
+
 
 

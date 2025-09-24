@@ -9,7 +9,6 @@
 using namespace std;
 
 #include "MiniLund.h"
-#include <iostream>
 
 // MiniLund class.
   
@@ -21,6 +20,9 @@ const double MiniLund::PROBFROMPOS = 0.5;
 
 // Sigma for pT distribution. TODO: Make this a setting.
 const double MiniLund::PTSIGMA = 0.335;
+
+// Mass of the single and only hadron. TODO: Make a ParticleData class.
+const double MiniLund::HADRONMASS = 0.5;
 
 // Constructor.
 MiniLund::MiniLund() {
@@ -38,7 +40,11 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
   posEnd = StringEnd(true, flav, 0.0, 0.0);
   negEnd = StringEnd(false, -flav, 0.0, 0.0);
 
+  // Define variables for fragmentation loop.
   bool fromPos;
+
+  double pxHad;
+  double pyHad;
   double m2Had;
   double mT2Had;
 
@@ -53,8 +59,8 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
 
     // Select px and py for new quark.
     pair<double, double> gauss2 = rndm.gauss2();
-    nowEnd.pxNew = gauss2.first;
-    nowEnd.pyNew = gauss2.second;
+    nowEnd.pxNew = gauss2.first * PTSIGMA;
+    nowEnd.pyNew = gauss2.second * PTSIGMA;
 
     // For now there is only one hadron.
     nowEnd.idHad = 1;
@@ -63,7 +69,7 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
     pxHad = nowEnd.pxEnd - nowEnd.pxNew;
     pyHad = nowEnd.pyEnd - nowEnd.pyNew;
     m2Had = pd.mass(idHad);
-    mT2Had = m2Had + pxHad ^ 2 + pyHad ^ 2;
+    mT2Had = m2Had + pow2(pxHad) + pow2(pyHad);
 
     // Check if there is energy left in the string.
     w2Rem = pRem.m2calc();
@@ -73,7 +79,7 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
         // Add back hadron energy.
         int iLast = fromPos ? iLastPos : iLastNeg;
 	pRem += event[iLast].p();
-	event.remove(iLast); // ??
+	event.erase(event.begin() + iLast);
 
 	// Rewind string end.
 	nowEnd.flavEnd = nowEnd.flavEndPrev;
@@ -141,13 +147,8 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
       for (int i = 0; i < event.size(); ++i)
 	event[i].p().boost(-pCm); // Really this should only affect the 3-vector
 	
-      // Calculate the required change in energy to restore energy-momentum
-      // conservation.
-      Vec4 pTot = Vec4(0.0, 0.0, 0.0, 0.0);
-      for (int i = 0; i < event.size(); ++i) {
-	p
-
-      // Rescale all hadron longitudinal momenta to achieve required change in energy.
+      // TODO: Rescale all hadron longitudinal momenta to achieve required
+      // change in energy.
 
       // Finished.
     }
@@ -161,7 +162,8 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
     eHad = 0.5 * (pPosHad + pNegHad);
     pzHad = 0.5 * (pPosHad - pNegHad);
     pHad = Vec4(eHad, pxHad, pyHad, pzHad);
-    newHad = Particle(pHad, sqrt(m2Had));
+    newHad = Particle(nowEnd.idHad, fromPos, eHad, pxHad, pyHad, pzHad,
+		      sqrt(m2Had));
     
     if (fromPos)
       iLastPos = event.append(newHad);
@@ -181,7 +183,7 @@ bool MiniLund::fragment_string_accordion(double cme, int flav) {
   }
   
 }
-
+ 
 
 
 
